@@ -1,2 +1,2 @@
-# nz-herald
-A repo for playing with NZ herald articles
+# minimal-project
+A simple template for future projects
