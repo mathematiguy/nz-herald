@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04
 
 # Use New Zealand mirrors
 RUN sed -i 's/archive/nz.archive/' /etc/apt/sources.list
@@ -15,8 +15,18 @@ RUN dpkg-reconfigure -f noninteractive tzdata
 ENV LANG en_NZ.UTF-8
 ENV LANGUAGE en_NZ:en
 
+# Create user 'kaimahi' to create a home directory
+RUN useradd kaimahi
+RUN mkdir -p /kaimahi/
+WORKDIR /kaimahi/
+
+# These two lines are needed to run unoconv
+RUN chown -R kaimahi /kaimahi
+ENV HOME /kaimahi
+
 # Install python + other things
 RUN apt install -y python3-dev python3-pip
+RUN python3 -m pip install --upgrade pip
 
 COPY requirements.txt /root/requirements.txt
 RUN pip3 install -r /root/requirements.txt

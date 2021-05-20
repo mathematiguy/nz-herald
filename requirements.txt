@@ -1,0 +1,12 @@
+jupyter
+jupyterlab
+pandas
+numpy
+huggingface
+spacy
+matplotlib
+transformers[torch]
+torch
+click
+black
+tensorboard
