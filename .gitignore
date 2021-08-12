@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Added by me
+data/raw/
+data/train/
+data/unzipped/
+models/
